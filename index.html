@@ -10,7 +10,15 @@
 <title>RHYTHM TRADING</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap');
-:root{--bg:#080c10;--surface:#0d1117;--surface2:#111820;--surface3:#161f2a;--border:#1e2d3d;--border2:#2a3d52;--green:#00e5a0;--red:#ff4060;--yellow:#f5c842;--blue:#4ab0ff;--purple:#b080ff;--orange:#ff8c42;--text:#c8d8e8;--text-dim:#6080a0;--text-bright:#e8f4ff;--mono:'Share Tech Mono',monospace;--display:'Barlow Condensed',sans-serif;--body:'Barlow',sans-serif;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);}
+:root {
+  --bg:#080c10; --surface:#0d1117; --surface2:#111820; --surface3:#161f2a;
+  --border:#1e2d3d; --border2:#2a3d52;
+  --green:#00e5a0; --red:#ff4060; --yellow:#f5c842;
+  --blue:#4ab0ff; --purple:#b080ff; --orange:#ff8c42;
+  --text:#c8d8e8; --text-dim:#6080a0; --text-bright:#e8f4ff;
+  --mono:'Share Tech Mono',monospace; --display:'Barlow Condensed',sans-serif; --body:'Barlow',sans-serif;
+  --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px);
+}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;}
 body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;padding-top:var(--safe-top);padding-bottom:var(--safe-bottom);}
@@ -153,8 +161,6 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .ds-n{width:26px;height:26px;border-radius:50%;background:rgba(0,229,160,0.15);border:1px solid rgba(0,229,160,0.3);color:var(--green);font-family:var(--display);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .ds-c{font-family:var(--mono);font-size:10px;color:var(--text);line-height:1.7;}
 .ds-c strong{color:var(--text-bright);display:block;font-size:11px;margin-bottom:2px;letter-spacing:1px;}
-.ds-c a{color:var(--blue);}
-.code-block{background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:7px 10px;margin-top:5px;font-family:var(--mono);font-size:9px;color:var(--yellow);letter-spacing:1px;overflow-x:auto;white-space:nowrap;}
 .modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:500;align-items:center;justify-content:center;}
 .modal-ov.open{display:flex;}
 .modal{background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:22px;width:320px;max-width:92vw;}
@@ -199,7 +205,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
   <div id="tab-fundamentals" class="tc">
     <div class="f-wrap">
-      <div class="f-hdr"><div class="f-title">FUNDAMENTALS SNAPSHOT</div><div class="f-sub" id="fundsDate">LIVE · FMP + SEC FILINGS · REFRESHES WITH EVERY UPDATE</div></div>
+      <div class="f-hdr"><div class="f-title">FUNDAMENTALS SNAPSHOT</div><div class="f-sub" id="fundsDate">LIVE · FMP + SEC · REFRESHES WITH EVERY UPDATE</div></div>
       <div style="overflow-x:auto">
         <table class="ftable">
           <thead><tr><th>TICKER</th><th>PRICE</th><th>FWD P/E</th><th>PEG</th><th>REV GROWTH</th><th>EPS TREND</th><th>TARGET</th><th>UPSIDE</th><th>EARNINGS</th><th>VALUE SCORE</th></tr></thead>
@@ -211,7 +217,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <div class="fex-card">
         <div class="fex-title">VALUE SCORE GUIDE</div>
         <div class="fex-row"><div class="fex-key" style="color:var(--green)">8–10</div><div class="fex-desc">Growth justifies price. Thesis intact.</div></div>
-        <div class="fex-row"><div class="fex-key" style="color:var(--blue)">6–7</div><div class="fex-desc">Reasonable. Slightly stretched but momentum intact.</div></div>
+        <div class="fex-row"><div class="fex-key" style="color:var(--blue)">6–7</div><div class="fex-desc">Reasonable. Momentum intact.</div></div>
         <div class="fex-row"><div class="fex-key" style="color:var(--yellow)">4–5</div><div class="fex-desc">Caution. Price ahead of fundamentals.</div></div>
         <div class="fex-row"><div class="fex-key" style="color:var(--red)">1–3</div><div class="fex-desc">Priced for perfection. Tighten stops.</div></div>
       </div>
@@ -219,8 +225,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="fex-title">METRIC GLOSSARY</div>
         <div class="fex-row"><div class="fex-key">FWD P/E</div><div class="fex-desc">Price ÷ next 12mo earnings. Updates live.</div></div>
         <div class="fex-row"><div class="fex-key">PEG</div><div class="fex-desc">Under 1.0 = cheap vs growth. Over 3.0 = expensive.</div></div>
-        <div class="fex-row"><div class="fex-key">REV GROWTH</div><div class="fex-desc">YoY revenue growth. Updates post-earnings.</div></div>
-        <div class="fex-row"><div class="fex-key">EPS TREND</div><div class="fex-desc">🟢 beat / 🔴 miss vs estimate, last 3 quarters.</div></div>
+        <div class="fex-row"><div class="fex-key">REV GROWTH</div><div class="fex-desc">YoY revenue growth.</div></div>
+        <div class="fex-row"><div class="fex-key">EPS TREND</div><div class="fex-desc">🟢 beat / 🔴 miss last 3 quarters.</div></div>
       </div>
     </div>
   </div>
@@ -234,8 +240,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     <div class="acard">
       <div class="acard-title">📱 PUSH ALERTS — NTFY</div>
       <div class="a-step"><div class="a-num">1</div><div class="a-text">Download <strong>ntfy</strong> on iPhone (App Store, free).</div></div>
-      <div class="a-step"><div class="a-num">2</div><div class="a-text">Subscribe to a private channel name e.g. <strong>walt-rhythm-2026</strong></div></div>
-      <div class="a-step"><div class="a-num">3</div><div class="a-text">Paste your channel name below and save.</div></div>
+      <div class="a-step"><div class="a-num">2</div><div class="a-text">Subscribe to a private channel e.g. <strong>walt-rhythm-2026</strong></div></div>
+      <div class="a-step"><div class="a-num">3</div><div class="a-text">Paste channel name below and save.</div></div>
       <div class="ntfy-row"><input class="ntfy-inp" id="ntfyCh" placeholder="your-channel-name"><button class="ntfy-save" onclick="saveNtfy()">SAVE</button></div>
       <div style="font-family:var(--mono);font-size:9px;color:var(--text-dim);margin-top:6px" id="ntfyStatus"></div>
     </div>
@@ -251,7 +257,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   <div id="tab-deploy" class="tc">
     <div class="dcard">
       <div class="dcard-title">📱 ADD TO IPHONE HOME SCREEN</div>
-      <div class="ds"><div class="ds-n">1</div><div class="ds-c"><strong>OPEN IN IPHONE SAFARI</strong>https://waltbecker4-creator.github.io/rhythm-trading</div></div>
+      <div class="ds"><div class="ds-n">1</div><div class="ds-c"><strong>OPEN IN SAFARI ON IPHONE</strong>https://waltbecker4-creator.github.io/rhythm-trading</div></div>
       <div class="ds"><div class="ds-n">2</div><div class="ds-c"><strong>TAP SHARE → ADD TO HOME SCREEN</strong>Name it RHYTHM. Opens full screen like a native app.</div></div>
     </div>
   </div>
@@ -259,7 +265,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <div class="modal-ov" id="modalOv" onclick="closeBg(event)">
   <div class="modal">
     <div class="m-title">ADD TICKER</div>
-    <div class="m-sub">Any US stock. Data loads from FMP directly.</div>
+    <div class="m-sub">Any US stock. Data loads from FMP.</div>
     <div class="m-status" id="mStatus"></div>
     <div class="m-row"><input class="t-input" id="tInput" placeholder="NVDA" maxlength="8" onkeydown="if(event.key==='Enter')addTicker()"><button class="add-btn" onclick="addTicker()">ADD</button></div>
     <div class="sug-lbl">QUICK ADD</div>
@@ -270,7 +276,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <script>
 const FMP_KEY='Rumf7w78vVsVZQKoxlGRq4PRMyl6YcwS';
 const FMP='https://financialmodelingprep.com/api/v3';
-async function apiFetch(url,ms=10000){
+async function pFetch(url,ms=10000){
   try{const r=await fetch(url,{signal:AbortSignal.timeout(ms)});if(r.ok)return r;}catch{}
   return null;
 }
@@ -289,23 +295,14 @@ let liveData={},fundsData={};
 let watchlist=JSON.parse(localStorage.getItem('rhythmWatchlist')||'null')||[...DEFAULT_TICKERS];
 let weeklyRows=[],ntfyChannel=localStorage.getItem('ntfyCh')||'';
 window.addEventListener('DOMContentLoaded',()=>{buildStrip();buildCards();buildSuggestions();if(ntfyChannel)document.getElementById('ntfyCh').value=ntfyChannel;seedWeekly();buildWeekly();});
-async function fetchprofile(sym){
-  try{
-    const r=await apiFetch(`${FMP}/profile/${sym}?apikey=${FMP_KEY}`,9000);
-    if(!r)return null;
-    const j=await r.json();
-    const q=Array.isArray(j)?j[0]:j;
-    if(!q||!q.price)return null;
-    const price=q.price,prev=q.previousClose||q.price;
-    return{price,prev,open:q.open||prev,high:q.dayHigh||price,low:q.dayLow||price,chg:q.change||(price-prev),pct:q.changesPercentage||((price-prev)/prev*100),name:(q.name||sym).toUpperCase(),ok:true};
-  }catch{return null;}
-}
+
+// Prices come from FMP /profile — same call as fundamentals, free tier, CORS supported
 async function fetchFMP(sym){
   try{
     const[profileR,metricsR,earningsR]=await Promise.allSettled([
-      apiFetch(`${FMP}/profile/${sym}?apikey=${FMP_KEY}`,10000),
-      apiFetch(`${FMP}/key-metrics/${sym}?limit=4&apikey=${FMP_KEY}`,10000),
-      apiFetch(`${FMP}/historical/earning_calendar/${sym}?apikey=${FMP_KEY}`,10000),
+      pFetch(`${FMP}/profile/${sym}?apikey=${FMP_KEY}`,10000),
+      pFetch(`${FMP}/key-metrics/${sym}?limit=4&apikey=${FMP_KEY}`,10000),
+      pFetch(`${FMP}/historical/earning_calendar/${sym}?apikey=${FMP_KEY}`,10000),
     ]);
     let profile={},metrics=[],earnings=[];
     if(profileR.status==='fulfilled'&&profileR.value?.ok){const d=await profileR.value.json();profile=Array.isArray(d)?d[0]:d;}
@@ -321,23 +318,35 @@ async function fetchFMP(sym){
     const upcoming=earnings.find(e=>new Date(e.date)>today);
     const earningsDate=upcoming?upcoming.date:null;
     const earningsDays=earningsDate?Math.ceil((new Date(earningsDate)-today)/86400000):null;
-    return{fwdPE,peg,revGrowth,analystTarget,epsTrend,earningsDate,earningsDays,ok:true};
+    const profilePrice=profile?.price||null;
+    const companyName=profile?.companyName||null;
+    return{fwdPE,peg,revGrowth,analystTarget,epsTrend,earningsDate,earningsDays,profilePrice,companyName,ok:true};
   }catch{return{ok:false};}
 }
+
 async function refreshAll(){
   const btn=document.getElementById('rfrBtn');
   btn.classList.add('spin');btn.textContent='↻ LOADING';
   document.getElementById('statusBar').textContent='FETCHING FROM FMP...';
-  let pOk=0,fOk=0;
-  const pp=watchlist.map(async sym=>{const d=await fetchprofile(sym);if(d){liveData[sym]=d;pOk++;}});
-  const fp=watchlist.map(async sym=>{const d=await fetchFMP(sym);if(d&&d.ok){fundsData[sym]=d;fOk++;}});
-  await Promise.allSettled([...pp,...fp]);
+  let priceOk=0,fundsOk=0;
+  // Single fetch per ticker — profile gives us both price AND fundamentals
+  await Promise.allSettled(watchlist.map(async sym=>{
+    const d=await fetchFMP(sym);
+    if(d&&d.ok){
+      fundsData[sym]=d;fundsOk++;
+      if(d.profilePrice&&d.profilePrice>0){
+        liveData[sym]={price:d.profilePrice,prev:d.profilePrice,open:d.profilePrice,high:d.profilePrice,low:d.profilePrice,chg:0,pct:0,name:(d.companyName||sym).toUpperCase(),ok:true};
+        priceOk++;
+      }
+    }
+  }));
   btn.classList.remove('spin');btn.textContent='↻ REFRESH';
   const t=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
-  document.getElementById('statusBar').textContent=`UPDATED ${t} · PRICES: ${pOk}/${watchlist.length} · FUNDS: ${fOk}/${watchlist.length}`;
-  document.getElementById('fundsDate').textContent=`UPDATED ${t} · ${fOk}/${watchlist.length} LOADED`;
+  document.getElementById('statusBar').textContent=`UPDATED ${t} · PRICES: ${priceOk}/${watchlist.length} · FUNDS: ${fundsOk}/${watchlist.length}`;
+  document.getElementById('fundsDate').textContent=`UPDATED ${t} · ${fundsOk}/${watchlist.length} LOADED`;
   buildStrip();buildCards();buildFundamentals();checkAlerts();
 }
+
 function getColor(sym){return TC[SECTOR_MAP[sym]||'default'];}
 function getSector(sym){return SECTOR_MAP[sym]||'default';}
 function getChannelPos(sym,price){const s=SEED[sym];if(!s)return 50;return Math.min(Math.max(((price-s.wk52Low)/(s.ath-s.wk52Low))*100,0),99);}
@@ -426,7 +435,6 @@ function calcVS(f,pos){
   if(f.revGrowth!=null){if(f.revGrowth>0.4)s+=2;else if(f.revGrowth>0.2)s+=1;else if(f.revGrowth<0.05)s-=1;else if(f.revGrowth<0)s-=2;}
   if(f.epsTrend&&f.epsTrend.length){const b=f.epsTrend.filter(Boolean).length;if(b===3)s+=1;else if(b===0)s-=1;}
   if(pos>=85)s-=1;if(pos>=95)s-=1;
-  if(f.analystTarget&&liveData[f._sym]){const u=((f.analystTarget-liveData[f._sym].price)/liveData[f._sym].price)*100;if(u>15)s+=1;else if(u<-10)s-=1;}
   return Math.min(Math.max(Math.round(s),1),10);
 }
 function buildFundamentals(){
@@ -444,7 +452,6 @@ function buildFundamentals(){
     if(f?.analystTarget&&d){tgtH=`$${f.analystTarget.toFixed(0)}`;const u=((f.analystTarget-d.price)/d.price)*100;upH=`<span class="${u>5?'upside-pos':u<-5?'upside-neg':'fl'}">${u>=0?'+':''}${u.toFixed(1)}%</span>`;}
     let earnH='—';
     if(f?.earningsDays!=null){earnH=`<span class="${f.earningsDays<=7?'earn-soon':f.earningsDays<=21?'earn-near':'earn-ok'}">${f.earningsDays}d</span>${f.earningsDate?`<br><span style="font-size:8px;color:var(--text-dim)">${f.earningsDate}</span>`:''}`;}
-    if(f)f._sym=sym;
     const vs=calcVS(f,pos);
     const vsH=vs===null?'—':`<span class="vscore ${vs>=7?'vs-hi':vs>=5?'vs-md':'vs-lo'}">${vs}/10</span>`;
     const tr=document.createElement('tr');
@@ -461,12 +468,13 @@ async function addTicker(){
   if(!sym)return;
   if(watchlist.includes(sym)){st.style.color='var(--yellow)';st.textContent=sym+' ALREADY IN WATCHLIST';return;}
   st.style.color='var(--text-dim)';st.textContent='FETCHING '+sym+'...';
-  const d=await fetchprofile(sym);
-  if(!d){st.style.color='var(--red)';st.textContent='COULD NOT FIND '+sym;return;}
-  liveData[sym]=d;watchlist.push(sym);localStorage.setItem('rhythmWatchlist',JSON.stringify(watchlist));
-  fetchFMP(sym).then(f=>{if(f&&f.ok){fundsData[sym]=f;buildFundamentals();}});
-  st.style.color='var(--green)';st.textContent='✓ '+sym+' ADDED · $'+d.price.toFixed(2);
-  buildStrip();buildCards();setTimeout(closeModal,900);
+  const d=await fetchFMP(sym);
+  if(!d||!d.ok||!d.profilePrice){st.style.color='var(--red)';st.textContent='COULD NOT FIND '+sym;return;}
+  fundsData[sym]=d;
+  liveData[sym]={price:d.profilePrice,prev:d.profilePrice,open:d.profilePrice,high:d.profilePrice,low:d.profilePrice,chg:0,pct:0,name:(d.companyName||sym).toUpperCase(),ok:true};
+  watchlist.push(sym);localStorage.setItem('rhythmWatchlist',JSON.stringify(watchlist));
+  st.style.color='var(--green)';st.textContent='✓ '+sym+' ADDED · $'+d.profilePrice.toFixed(2);
+  buildStrip();buildCards();buildFundamentals();setTimeout(closeModal,900);
 }
 function removeTicker(sym){
   if(!confirm('Remove '+sym+'?'))return;
