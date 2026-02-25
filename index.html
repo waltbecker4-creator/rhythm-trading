@@ -10,15 +10,7 @@
 <title>RHYTHM TRADING</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap');
-:root {
-  --bg:#080c10; --surface:#0d1117; --surface2:#111820; --surface3:#161f2a;
-  --border:#1e2d3d; --border2:#2a3d52;
-  --green:#00e5a0; --red:#ff4060; --yellow:#f5c842;
-  --blue:#4ab0ff; --purple:#b080ff; --orange:#ff8c42;
-  --text:#c8d8e8; --text-dim:#6080a0; --text-bright:#e8f4ff;
-  --mono:'Share Tech Mono',monospace; --display:'Barlow Condensed',sans-serif; --body:'Barlow',sans-serif;
-  --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px);
-}
+:root{--bg:#080c10;--surface:#0d1117;--surface2:#111820;--surface3:#161f2a;--border:#1e2d3d;--border2:#2a3d52;--green:#00e5a0;--red:#ff4060;--yellow:#f5c842;--blue:#4ab0ff;--purple:#b080ff;--orange:#ff8c42;--text:#c8d8e8;--text-dim:#6080a0;--text-bright:#e8f4ff;--mono:'Share Tech Mono',monospace;--display:'Barlow Condensed',sans-serif;--body:'Barlow',sans-serif;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;}
 body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;padding-top:var(--safe-top);padding-bottom:var(--safe-bottom);}
@@ -110,9 +102,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .f-sym{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:2px;}
 .vscore{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:1px;}
 .vs-hi{color:var(--green);}.vs-md{color:var(--yellow);}.vs-lo{color:var(--red);}
-.earn-soon{color:var(--red);font-weight:700;}
-.earn-near{color:var(--yellow);}
-.earn-ok{color:var(--text-dim);}
+.earn-soon{color:var(--red);font-weight:700;}.earn-near{color:var(--yellow);}.earn-ok{color:var(--text-dim);}
 .upside-pos{color:var(--green);}.upside-neg{color:var(--red);}
 .beat{color:var(--green);font-size:12px;}.miss{color:var(--red);font-size:12px;}
 .fex-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
@@ -189,14 +179,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 </head>
 <body>
 <div class="hdr">
-  <div>
-    <div class="logo">RHYTHM</div>
-    <div class="logo-sub" id="statusSub">CHANNEL INTELLIGENCE · FMP CONNECTED</div>
-  </div>
-  <div class="hdr-r">
-    <div class="live-dot"></div>
-    <button class="rfr-btn" id="rfrBtn" onclick="refreshAll()">↻ REFRESH</button>
-  </div>
+  <div><div class="logo">RHYTHM</div><div class="logo-sub">CHANNEL INTELLIGENCE · FMP LIVE</div></div>
+  <div class="hdr-r"><div class="live-dot"></div><button class="rfr-btn" id="rfrBtn" onclick="refreshAll()">↻ REFRESH</button></div>
 </div>
 <div class="status-bar" id="statusBar">TAP ↻ REFRESH TO LOAD LIVE DATA</div>
 <div class="strip" id="strip"></div>
@@ -210,133 +194,91 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <div class="main">
   <div id="tab-channels" class="tc active">
     <div class="cgrid" id="cardsGrid">
-      <div class="loading-card">
-        <div class="loading-text">TAP REFRESH TO LOAD LIVE DATA</div>
-        <div class="loading-bar"><div class="loading-fill"></div></div>
-      </div>
+      <div class="loading-card"><div class="loading-text">TAP REFRESH TO LOAD LIVE DATA</div><div class="loading-bar"><div class="loading-fill"></div></div></div>
     </div>
   </div>
   <div id="tab-fundamentals" class="tc">
     <div class="f-wrap">
-      <div class="f-hdr">
-        <div class="f-title">FUNDAMENTALS SNAPSHOT</div>
-        <div class="f-sub" id="fundsDate">LIVE DATA · FMP + SEC FILINGS · REFRESHES WITH EVERY UPDATE</div>
-      </div>
+      <div class="f-hdr"><div class="f-title">FUNDAMENTALS SNAPSHOT</div><div class="f-sub" id="fundsDate">LIVE · FMP + SEC FILINGS · REFRESHES WITH EVERY UPDATE</div></div>
       <div style="overflow-x:auto">
         <table class="ftable">
-          <thead><tr>
-            <th>TICKER</th><th>PRICE</th><th>FWD P/E</th><th>PEG RATIO</th>
-            <th>REV GROWTH</th><th>EPS TREND (3Q)</th><th>ANALYST TARGET</th>
-            <th>UPSIDE %</th><th>EARNINGS IN</th><th>VALUE SCORE</th>
-          </tr></thead>
-          <tbody id="fundsBody">
-            <tr><td colspan="10" style="text-align:center;padding:28px;font-family:var(--mono);font-size:10px;color:var(--text-dim);">TAP ↻ REFRESH TO LOAD FUNDAMENTALS</td></tr>
-          </tbody>
+          <thead><tr><th>TICKER</th><th>PRICE</th><th>FWD P/E</th><th>PEG</th><th>REV GROWTH</th><th>EPS TREND</th><th>TARGET</th><th>UPSIDE</th><th>EARNINGS</th><th>VALUE SCORE</th></tr></thead>
+          <tbody id="fundsBody"><tr><td colspan="10" style="text-align:center;padding:28px;font-family:var(--mono);font-size:10px;color:var(--text-dim);">TAP ↻ REFRESH TO LOAD</td></tr></tbody>
         </table>
       </div>
     </div>
     <div class="fex-grid">
       <div class="fex-card">
         <div class="fex-title">VALUE SCORE GUIDE</div>
-        <div class="fex-row"><div class="fex-key" style="color:var(--green)">8–10</div><div class="fex-desc">Growth fully justifies price. Fundamentals strong. Thesis intact.</div></div>
-        <div class="fex-row"><div class="fex-key" style="color:var(--blue)">6–7</div><div class="fex-desc">Reasonable. Slightly stretched but earnings momentum intact.</div></div>
-        <div class="fex-row"><div class="fex-key" style="color:var(--yellow)">4–5</div><div class="fex-desc">Caution. Price ahead of fundamentals. Watch closely.</div></div>
-        <div class="fex-row"><div class="fex-key" style="color:var(--red)">1–3</div><div class="fex-desc">Priced for perfection. Any miss = big drawdown. Tighten stops.</div></div>
+        <div class="fex-row"><div class="fex-key" style="color:var(--green)">8–10</div><div class="fex-desc">Growth justifies price. Thesis intact.</div></div>
+        <div class="fex-row"><div class="fex-key" style="color:var(--blue)">6–7</div><div class="fex-desc">Reasonable. Slightly stretched but momentum intact.</div></div>
+        <div class="fex-row"><div class="fex-key" style="color:var(--yellow)">4–5</div><div class="fex-desc">Caution. Price ahead of fundamentals.</div></div>
+        <div class="fex-row"><div class="fex-key" style="color:var(--red)">1–3</div><div class="fex-desc">Priced for perfection. Tighten stops.</div></div>
       </div>
       <div class="fex-card">
         <div class="fex-title">METRIC GLOSSARY</div>
-        <div class="fex-row"><div class="fex-key">FWD P/E</div><div class="fex-desc">Price ÷ next 12mo earnings. Recalculates live with every price change.</div></div>
-        <div class="fex-row"><div class="fex-key">PEG</div><div class="fex-desc">P/E ÷ growth rate. Under 1.0 = cheap vs growth. Over 3.0 = expensive.</div></div>
-        <div class="fex-row"><div class="fex-key">REV GROWTH</div><div class="fex-desc">Year-over-year revenue growth. Updates within 24hrs of each earnings report.</div></div>
-        <div class="fex-row"><div class="fex-key">EPS TREND</div><div class="fex-desc">Last 3 quarters: 🟢 beat or 🔴 missed. Leading indicator of thesis health.</div></div>
-        <div class="fex-row"><div class="fex-key">UPSIDE</div><div class="fex-desc">Current price vs analyst consensus target. Negative = ran past targets.</div></div>
+        <div class="fex-row"><div class="fex-key">FWD P/E</div><div class="fex-desc">Price ÷ next 12mo earnings. Updates live.</div></div>
+        <div class="fex-row"><div class="fex-key">PEG</div><div class="fex-desc">Under 1.0 = cheap vs growth. Over 3.0 = expensive.</div></div>
+        <div class="fex-row"><div class="fex-key">REV GROWTH</div><div class="fex-desc">YoY revenue growth. Updates post-earnings.</div></div>
+        <div class="fex-row"><div class="fex-key">EPS TREND</div><div class="fex-desc">🟢 beat / 🔴 miss vs estimate, last 3 quarters.</div></div>
       </div>
     </div>
   </div>
   <div id="tab-weekly" class="tc">
     <div class="wcard">
-      <div class="wcard-hdr">
-        <div class="wcard-title">WEEKLY LOG</div>
-        <button class="log-btn" onclick="addWeekRow()">+ LOG WEEK</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="wt">
-          <thead><tr><th>SYM</th><th>WEEK</th><th>CLOSE</th><th>CHG%</th><th>ZONE</th><th>STATUS</th><th>NOTES</th></tr></thead>
-          <tbody id="weeklyBody"></tbody>
-        </table>
-      </div>
+      <div class="wcard-hdr"><div class="wcard-title">WEEKLY LOG</div><button class="log-btn" onclick="addWeekRow()">+ LOG WEEK</button></div>
+      <div style="overflow-x:auto"><table class="wt"><thead><tr><th>SYM</th><th>WEEK</th><th>CLOSE</th><th>CHG%</th><th>ZONE</th><th>STATUS</th><th>NOTES</th></tr></thead><tbody id="weeklyBody"></tbody></table></div>
     </div>
   </div>
   <div id="tab-alerts" class="tc">
     <div class="acard">
-      <div class="acard-title">📱 PUSH ALERTS — NTFY SETUP</div>
-      <div class="a-step"><div class="a-num">1</div><div class="a-text">Download <strong>ntfy</strong> on iPhone (free, App Store).</div></div>
-      <div class="a-step"><div class="a-num">2</div><div class="a-text">Create a private channel name — e.g. <strong>walt-rhythm-2026</strong></div></div>
-      <div class="a-step"><div class="a-num">3</div><div class="a-text">In ntfy app: Subscribe → enter your channel name → paste below.</div></div>
-      <div class="a-step"><div class="a-num">4</div><div class="a-text">RHYTHM pushes alerts on big moves, zone crosses, and earnings.</div></div>
-      <div class="ntfy-row">
-        <input class="ntfy-inp" id="ntfyCh" placeholder="your-channel-name">
-        <button class="ntfy-save" onclick="saveNtfy()">SAVE</button>
-      </div>
+      <div class="acard-title">📱 PUSH ALERTS — NTFY</div>
+      <div class="a-step"><div class="a-num">1</div><div class="a-text">Download <strong>ntfy</strong> on iPhone (App Store, free).</div></div>
+      <div class="a-step"><div class="a-num">2</div><div class="a-text">Subscribe to a private channel name e.g. <strong>walt-rhythm-2026</strong></div></div>
+      <div class="a-step"><div class="a-num">3</div><div class="a-text">Paste your channel name below and save.</div></div>
+      <div class="ntfy-row"><input class="ntfy-inp" id="ntfyCh" placeholder="your-channel-name"><button class="ntfy-save" onclick="saveNtfy()">SAVE</button></div>
       <div style="font-family:var(--mono);font-size:9px;color:var(--text-dim);margin-top:6px" id="ntfyStatus"></div>
     </div>
     <div class="acard">
-      <div class="acard-title">⚡ ALERT THRESHOLDS</div>
+      <div class="acard-title">⚡ THRESHOLDS</div>
       <div class="a-row"><div class="a-label">Alert when daily move exceeds:</div><input class="a-inp" id="alertPct" value="5" type="number"><span class="a-unit">%</span></div>
-      <div class="a-row"><div class="a-label">Alert when entering DANGER zone:</div><input class="a-inp" id="alertDanger" value="15" type="number"><span class="a-unit">% of range</span></div>
-      <div class="a-row"><div class="a-label">Alert when hitting EXTENDED zone:</div><input class="a-inp" id="alertExtended" value="85" type="number"><span class="a-unit">% of range</span></div>
+      <div class="a-row"><div class="a-label">Alert when entering DANGER zone:</div><input class="a-inp" id="alertDanger" value="15" type="number"><span class="a-unit">%</span></div>
+      <div class="a-row"><div class="a-label">Alert when hitting EXTENDED zone:</div><input class="a-inp" id="alertExtended" value="85" type="number"><span class="a-unit">%</span></div>
       <div class="a-row"><div class="a-label">Alert when earnings within:</div><input class="a-inp" id="alertEarnings" value="7" type="number"><span class="a-unit">days</span></div>
-      <button class="big-btn" onclick="testAlert()">📨 SEND TEST ALERT TO PHONE</button>
+      <button class="big-btn" onclick="testAlert()">📨 SEND TEST ALERT</button>
     </div>
   </div>
   <div id="tab-deploy" class="tc">
     <div class="dcard">
       <div class="dcard-title">📱 ADD TO IPHONE HOME SCREEN</div>
-      <div class="ds"><div class="ds-n">1</div><div class="ds-c"><strong>OPEN IN SAFARI ON IPHONE</strong>Go to: https://waltbecker4-creator.github.io/rhythm-trading</div></div>
-      <div class="ds"><div class="ds-n">2</div><div class="ds-c"><strong>TAP SHARE BUTTON</strong>The box with the arrow pointing up at the bottom of Safari.</div></div>
-      <div class="ds"><div class="ds-n">3</div><div class="ds-c"><strong>TAP "ADD TO HOME SCREEN"</strong>Name it RHYTHM → tap Add. Opens full screen like a native app.</div></div>
+      <div class="ds"><div class="ds-n">1</div><div class="ds-c"><strong>OPEN IN IPHONE SAFARI</strong>https://waltbecker4-creator.github.io/rhythm-trading</div></div>
+      <div class="ds"><div class="ds-n">2</div><div class="ds-c"><strong>TAP SHARE → ADD TO HOME SCREEN</strong>Name it RHYTHM. Opens full screen like a native app.</div></div>
     </div>
   </div>
 </div>
 <div class="modal-ov" id="modalOv" onclick="closeBg(event)">
   <div class="modal">
     <div class="m-title">ADD TICKER</div>
-    <div class="m-sub">Any US stock symbol. Live data loads from Yahoo + FMP.</div>
+    <div class="m-sub">Any US stock. Data loads from FMP directly.</div>
     <div class="m-status" id="mStatus"></div>
-    <div class="m-row">
-      <input class="t-input" id="tInput" placeholder="NVDA" maxlength="8" onkeydown="if(event.key==='Enter')addTicker()">
-      <button class="add-btn" onclick="addTicker()">ADD</button>
-    </div>
+    <div class="m-row"><input class="t-input" id="tInput" placeholder="NVDA" maxlength="8" onkeydown="if(event.key==='Enter')addTicker()"><button class="add-btn" onclick="addTicker()">ADD</button></div>
     <div class="sug-lbl">QUICK ADD</div>
     <div class="sug-chips" id="sugChips"></div>
     <button class="m-close" onclick="closeModal()">CANCEL</button>
   </div>
 </div>
 <script>
-const FMP_KEY = 'Rumf7w78vVsVZQKoxlGRq4PRMyl6YcwS';
-const FMP = 'https://financialmodelingprep.com/api/v3';
-const PROXIES = [
-  u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
-  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-  u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
-];
-async function pFetch(url, ms=10000) {
-  for (const p of PROXIES) {
-    try { const r = await fetch(p(url),{signal:AbortSignal.timeout(ms)}); if(r.ok) return r; } catch {}
-  }
+const FMP_KEY='Rumf7w78vVsVZQKoxlGRq4PRMyl6YcwS';
+const FMP='https://financialmodelingprep.com/api/v3';
+async function apiFetch(url,ms=10000){
+  try{const r=await fetch(url,{signal:AbortSignal.timeout(ms)});if(r.ok)return r;}catch{}
   return null;
 }
-const DEFAULT_TICKERS = ['VRT','MU','LITE','BE','SNDK'];
-const SUGGESTIONS = ['NVDA','AMD','AAPL','CEG','VST','COHR','ARM','TSM','AVGO','MSFT'];
-const SECTOR_MAP = {
-  VRT:'infra',MU:'memory',LITE:'optical',BE:'energy',SNDK:'memory',
-  NVDA:'memory',AMD:'memory',INTC:'memory',QCOM:'memory',TSM:'memory',AVGO:'memory',ARM:'memory',
-  AAPL:'infra',MSFT:'infra',GOOGL:'infra',META:'infra',AMZN:'infra',
-  CEG:'energy',VST:'energy',NRG:'energy',NEE:'energy',
-  COHR:'optical',IIVI:'optical',
-};
-const TC = {energy:'#f5c842',infra:'#4ab0ff',optical:'#b080ff',memory:'#00e5a0',default:'#ff8c42'};
-const SEED = {
+const DEFAULT_TICKERS=['VRT','MU','LITE','BE','SNDK'];
+const SUGGESTIONS=['NVDA','AMD','AAPL','CEG','VST','COHR','ARM','TSM','AVGO','MSFT'];
+const SECTOR_MAP={VRT:'infra',MU:'memory',LITE:'optical',BE:'energy',SNDK:'memory',NVDA:'memory',AMD:'memory',INTC:'memory',QCOM:'memory',TSM:'memory',AVGO:'memory',ARM:'memory',AAPL:'infra',MSFT:'infra',GOOGL:'infra',META:'infra',AMZN:'infra',CEG:'energy',VST:'energy',NRG:'energy',NEE:'energy',COHR:'optical',IIVI:'optical'};
+const TC={energy:'#f5c842',infra:'#4ab0ff',optical:'#b080ff',memory:'#00e5a0',default:'#ff8c42'};
+const SEED={
   VRT:{wk52Low:50,ath:255.54,normalPullback:'15–28%',breakLevel:'~$210',runPct:'+416%',candles:[{date:'F18',o:247,h:254.05,l:240.38,c:243.21},{date:'F19',o:241.03,h:247.71,l:239.52,c:243.06},{date:'F20',o:240.99,h:246.8,l:238.19,c:243.75},{date:'F23',o:242.6,h:245.77,l:240,c:245.42},{date:'F24',o:246.5,h:253.48,l:241.27,c:253.15}]},
   MU:{wk52Low:85,ath:455.5,normalPullback:'20–38%',breakLevel:'~$340',runPct:'+435%',candles:[{date:'F18',o:399.5,h:427.85,l:394.6,c:420.95},{date:'F19',o:415.81,h:420.32,l:407.74,c:417.35},{date:'F20',o:415.18,h:430.57,l:415.15,c:428.17},{date:'F23',o:422.31,h:431.7,l:415.3,c:420.97},{date:'F24',o:429.22,h:436.27,l:411.28,c:418.01}]},
   LITE:{wk52Low:45,ath:765,normalPullback:'22–45%',breakLevel:'~$520',runPct:'+1,600%',candles:[{date:'F18',o:602.09,h:610.3,l:587,c:594.26},{date:'F19',o:592.57,h:636.68,l:578.3,c:635.64},{date:'F20',o:638,h:678,l:636,c:667.77},{date:'F23',o:664.05,h:688.07,l:652.21,c:674.73},{date:'F24',o:680.01,h:698.5,l:662,c:688.27}]},
@@ -346,30 +288,24 @@ const SEED = {
 let liveData={},fundsData={};
 let watchlist=JSON.parse(localStorage.getItem('rhythmWatchlist')||'null')||[...DEFAULT_TICKERS];
 let weeklyRows=[],ntfyChannel=localStorage.getItem('ntfyCh')||'';
-window.addEventListener('DOMContentLoaded',()=>{
-  buildStrip();buildCards();buildSuggestions();
-  if(ntfyChannel)document.getElementById('ntfyCh').value=ntfyChannel;
-  seedWeekly();buildWeekly();
-});
-async function fetchYahoo(sym){
+window.addEventListener('DOMContentLoaded',()=>{buildStrip();buildCards();buildSuggestions();if(ntfyChannel)document.getElementById('ntfyCh').value=ntfyChannel;seedWeekly();buildWeekly();});
+async function fetchQuote(sym){
   try{
-    const url=`https://query1.finance.yahoo.com/v8/finance/chart/${sym}?interval=1d&range=1d`;
-    const r=await pFetch(url,9000);
+    const r=await apiFetch(`${FMP}/quote/${sym}?apikey=${FMP_KEY}`,9000);
     if(!r)return null;
     const j=await r.json();
-    const m=j?.chart?.result?.[0]?.meta;
-    if(!m)return null;
-    const price=m.regularMarketPrice||m.previousClose;
-    const prev=m.previousClose||m.chartPreviousClose;
-    return{price,prev,open:m.regularMarketOpen||prev,high:m.regularMarketDayHigh||price,low:m.regularMarketDayLow||price,chg:price-prev,pct:((price-prev)/prev)*100,name:(m.longName||m.shortName||sym).toUpperCase(),ok:true};
+    const q=Array.isArray(j)?j[0]:j;
+    if(!q||!q.price)return null;
+    const price=q.price,prev=q.previousClose||q.price;
+    return{price,prev,open:q.open||prev,high:q.dayHigh||price,low:q.dayLow||price,chg:q.change||(price-prev),pct:q.changesPercentage||((price-prev)/prev*100),name:(q.name||sym).toUpperCase(),ok:true};
   }catch{return null;}
 }
 async function fetchFMP(sym){
   try{
     const[profileR,metricsR,earningsR]=await Promise.allSettled([
-      pFetch(`${FMP}/profile/${sym}?apikey=${FMP_KEY}`,10000),
-      pFetch(`${FMP}/key-metrics/${sym}?limit=4&apikey=${FMP_KEY}`,10000),
-      pFetch(`${FMP}/historical/earning_calendar/${sym}?apikey=${FMP_KEY}`,10000),
+      apiFetch(`${FMP}/profile/${sym}?apikey=${FMP_KEY}`,10000),
+      apiFetch(`${FMP}/key-metrics/${sym}?limit=4&apikey=${FMP_KEY}`,10000),
+      apiFetch(`${FMP}/historical/earning_calendar/${sym}?apikey=${FMP_KEY}`,10000),
     ]);
     let profile={},metrics=[],earnings=[];
     if(profileR.status==='fulfilled'&&profileR.value?.ok){const d=await profileR.value.json();profile=Array.isArray(d)?d[0]:d;}
@@ -379,7 +315,7 @@ async function fetchFMP(sym){
     const peg=metrics[0]?.pegRatio||null;
     const revGrowth=metrics[0]?.revenueGrowth||null;
     const analystTarget=profile?.targetHigh?((profile.targetHigh+(profile.targetLow||profile.targetHigh))/2):null;
-    const past=earnings.filter(e=>e.eps!==null&&e.epsEstimated!==null).slice(0,3);
+    const past=earnings.filter(e=>e.eps!=null&&e.epsEstimated!=null).slice(0,3);
     const epsTrend=past.map(e=>e.eps>=e.epsEstimated);
     const today=new Date();
     const upcoming=earnings.find(e=>new Date(e.date)>today);
@@ -391,15 +327,15 @@ async function fetchFMP(sym){
 async function refreshAll(){
   const btn=document.getElementById('rfrBtn');
   btn.classList.add('spin');btn.textContent='↻ LOADING';
-  document.getElementById('statusBar').textContent='FETCHING LIVE DATA...';
-  let priceOk=0,fundsOk=0;
-  const pp=watchlist.map(async sym=>{const d=await fetchYahoo(sym);if(d){liveData[sym]=d;priceOk++;}});
-  const fp=watchlist.map(async sym=>{const d=await fetchFMP(sym);if(d&&d.ok){fundsData[sym]=d;fundsOk++;}});
+  document.getElementById('statusBar').textContent='FETCHING FROM FMP...';
+  let pOk=0,fOk=0;
+  const pp=watchlist.map(async sym=>{const d=await fetchQuote(sym);if(d){liveData[sym]=d;pOk++;}});
+  const fp=watchlist.map(async sym=>{const d=await fetchFMP(sym);if(d&&d.ok){fundsData[sym]=d;fOk++;}});
   await Promise.allSettled([...pp,...fp]);
   btn.classList.remove('spin');btn.textContent='↻ REFRESH';
   const t=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
-  document.getElementById('statusBar').textContent=`LAST UPDATE: ${t} · PRICES: ${priceOk}/${watchlist.length} · FUNDS: ${fundsOk}/${watchlist.length}`;
-  document.getElementById('fundsDate').textContent=`UPDATED ${t} · ${fundsOk}/${watchlist.length} LOADED`;
+  document.getElementById('statusBar').textContent=`UPDATED ${t} · PRICES: ${pOk}/${watchlist.length} · FUNDS: ${fOk}/${watchlist.length}`;
+  document.getElementById('fundsDate').textContent=`UPDATED ${t} · ${fOk}/${watchlist.length} LOADED`;
   buildStrip();buildCards();buildFundamentals();checkAlerts();
 }
 function getColor(sym){return TC[SECTOR_MAP[sym]||'default'];}
@@ -430,15 +366,15 @@ function buildCards(){
   if(!watchlist.length){grid.innerHTML='<div class="loading-card"><div class="loading-text">NO TICKERS · TAP + TO ADD</div></div>';return;}
   watchlist.forEach(sym=>{
     const d=liveData[sym]||{price:0,open:0,high:0,low:0,pct:0,chg:0,name:sym};
-    const seed=SEED[sym]||{wk52Low:d.price*.5,ath:d.price*1.5,normalPullback:'N/A',breakLevel:'N/A',runPct:'N/A',candles:[]};
+    const seed=SEED[sym]||{wk52Low:0,ath:0,normalPullback:'N/A',breakLevel:'N/A',runPct:'N/A',candles:[]};
     const color=getColor(sym);const sector=getSector(sym);
     const pos=getChannelPos(sym,d.price);const zone=getZone(pos);
     const cs=d.pct>=0?'up':'dn';const sg=d.pct>=0?'+':'';
-    const cans=seed.candles||[];let candleHtml='';
+    const cans=seed.candles||[];let ch='';
     if(cans.length){
       const allP=cans.flatMap(c=>[c.l,c.h]);const mn=Math.min(...allP),mx=Math.max(...allP),rng=mx-mn||1;
       const pp=v=>100-((v-mn)/rng*78+11);
-      candleHtml=cans.map(c=>{
+      ch=cans.map(c=>{
         const g=c.c>=c.o;const bT=Math.min(pp(c.o),pp(c.c)),bB=Math.max(pp(c.o),pp(c.c));
         const dp=((c.c-c.o)/c.o*100);const dps=(dp>=0?'+':'')+dp.toFixed(1)+'%';
         return`<div class="c-day"><div class="c-wick" style="top:${pp(c.h)}%;height:${pp(c.l)-pp(c.h)}%"></div><div class="c-body" style="top:${bT}%;height:${Math.max(bB-bT,2)}%;background:${g?'var(--green)':'var(--red)'};opacity:0.82"></div><div class="c-date">${c.date}</div><div class="c-pct" style="color:${dp>=0?'var(--green)':'var(--red)'}">${dps}</div></div>`;
@@ -463,59 +399,56 @@ function buildCards(){
           <div class="cz z-d" style="left:0%;width:10%"></div><div class="cz z-l" style="left:10%;width:18%"></div>
           <div class="cz z-m" style="left:28%;width:25%"></div><div class="cz z-h" style="left:53%;width:25%"></div>
           <div class="cz z-e" style="left:78%;width:22%"></div>
-          <div class="zdv" style="left:10%"></div><div class="zdv" style="left:28%"></div>
-          <div class="zdv" style="left:53%"></div><div class="zdv" style="left:78%"></div>
+          <div class="zdv" style="left:10%"></div><div class="zdv" style="left:28%"></div><div class="zdv" style="left:53%"></div><div class="zdv" style="left:78%"></div>
           <div class="rng-lo">$${seed.wk52Low}</div><div class="rng-hi">$${seed.ath.toLocaleString()}</div>
-          <div class="cur" style="left:${pos}%;background:${cc};box-shadow:0 0 10px ${cc}">
-            <div class="cur-lbl" style="color:${cc}">▲ ${zone.label}</div>
-          </div>
+          <div class="cur" style="left:${pos}%;background:${cc};box-shadow:0 0 10px ${cc}"><div class="cur-lbl" style="color:${cc}">▲ ${zone.label}</div></div>
         </div>
         <div class="ch-marks"><span style="color:#aa2040">DANGER</span><span>LOW</span><span>MID</span><span>HIGH</span><span style="color:var(--purple)">EXTENDED</span></div>
       </div>
-      ${cans.length?`<div class="candle-wrap"><div class="candle-lbl">RECENT SESSIONS — DAILY % OPEN→CLOSE</div><div class="candle-row">${candleHtml}</div></div>`:''}
+      ${cans.length?`<div class="candle-wrap"><div class="candle-lbl">RECENT SESSIONS — DAILY % OPEN→CLOSE</div><div class="candle-row">${ch}</div></div>`:''}
       <div class="stats-row">
         <div class="sc"><div class="sl">TOTAL RUN</div><div class="sv up">${seed.runPct}</div></div>
         <div class="sc"><div class="sl">NORMAL PULLBACK</div><div class="sv dn">${seed.normalPullback}</div></div>
         <div class="sc"><div class="sl">BREAK LEVEL</div><div class="sv" style="color:var(--yellow);font-size:13px">${seed.breakLevel}</div></div>
       </div>
-      <div class="sig-row"><div class="sig-b ${zone.cls}">${zone.badge}</div><div class="sig-note">${getSignalNote(sym,pos,d.pct)}</div></div>`;
+      <div class="sig-row"><div class="sig-b ${zone.cls}">${zone.badge}</div><div class="sig-note">${getNote(sym,pos,d.pct)}</div></div>`;
     grid.appendChild(card);
   });
 }
-function getSignalNote(sym,pos,pct){
+function getNote(sym,pos,pct){
   let n=pos>=85?'Extended. Consider trimming 20–25%.':pos>=65?'High zone. Hold. Monitor weekly.':pos>=40?'Mid zone. Normal uptrend. No action.':pos>=20?'Low zone. Add opportunity if thesis intact.':'Danger zone. Check volume + fundamentals.';
   if(Math.abs(pct)>=5)n=`${pct>=0?'▲ BIG UP':'▼ BIG DOWN'} (${Math.abs(pct).toFixed(1)}%). `+n;
   return n;
 }
-function calcValueScore(f,pos){
-  if(!f)return null;let score=5;
-  if(f.peg!==null){if(f.peg<1)score+=2;else if(f.peg<1.5)score+=1;else if(f.peg>3)score-=2;else if(f.peg>2)score-=1;}
-  if(f.revGrowth!==null&&f.revGrowth!==undefined){if(f.revGrowth>0.4)score+=2;else if(f.revGrowth>0.2)score+=1;else if(f.revGrowth<0.05)score-=1;else if(f.revGrowth<0)score-=2;}
-  if(f.epsTrend&&f.epsTrend.length){const b=f.epsTrend.filter(Boolean).length;if(b===3)score+=1;else if(b===0)score-=1;}
-  if(pos>=85)score-=1;if(pos>=95)score-=1;
-  if(f.analystTarget&&liveData[f._sym]){const u=((f.analystTarget-liveData[f._sym].price)/liveData[f._sym].price)*100;if(u>15)score+=1;else if(u<-10)score-=1;}
-  return Math.min(Math.max(Math.round(score),1),10);
+function calcVS(f,pos){
+  if(!f)return null;let s=5;
+  if(f.peg!=null){if(f.peg<1)s+=2;else if(f.peg<1.5)s+=1;else if(f.peg>3)s-=2;else if(f.peg>2)s-=1;}
+  if(f.revGrowth!=null){if(f.revGrowth>0.4)s+=2;else if(f.revGrowth>0.2)s+=1;else if(f.revGrowth<0.05)s-=1;else if(f.revGrowth<0)s-=2;}
+  if(f.epsTrend&&f.epsTrend.length){const b=f.epsTrend.filter(Boolean).length;if(b===3)s+=1;else if(b===0)s-=1;}
+  if(pos>=85)s-=1;if(pos>=95)s-=1;
+  if(f.analystTarget&&liveData[f._sym]){const u=((f.analystTarget-liveData[f._sym].price)/liveData[f._sym].price)*100;if(u>15)s+=1;else if(u<-10)s-=1;}
+  return Math.min(Math.max(Math.round(s),1),10);
 }
 function buildFundamentals(){
   const tb=document.getElementById('fundsBody');tb.innerHTML='';
-  if(!watchlist.length){tb.innerHTML='<tr><td colspan="10" style="text-align:center;padding:28px;font-family:var(--mono);font-size:10px;color:var(--text-dim);">NO TICKERS</td></tr>';return;}
+  if(!watchlist.length){tb.innerHTML='<tr><td colspan="10" style="text-align:center;padding:28px;font-family:var(--mono);color:var(--text-dim);">NO TICKERS</td></tr>';return;}
   watchlist.forEach(sym=>{
     const d=liveData[sym];const f=fundsData[sym];const color=getColor(sym);
     const pos=d?getChannelPos(sym,d.price):50;
     const price=d?`$${d.price.toFixed(2)}`:'—';
     const fwdPE=f?.fwdPE?f.fwdPE.toFixed(1)+'x':'—';
-    let pegHtml='—';if(f?.peg){const pc=f.peg<1.5?'var(--green)':f.peg<2.5?'var(--yellow)':'var(--red)';pegHtml=`<span style="color:${pc};font-weight:700">${f.peg.toFixed(2)}</span>`;}
-    let revHtml='—';if(f?.revGrowth!=null){const rg=(f.revGrowth*100).toFixed(1);const rc=f.revGrowth>0.2?'var(--green)':f.revGrowth>0?'var(--yellow)':'var(--red)';revHtml=`<span style="color:${rc};font-weight:700">${rg>0?'+':''}${rg}%</span>`;}
-    let epsHtml='—';if(f?.epsTrend&&f.epsTrend.length){epsHtml=f.epsTrend.map(b=>b?'<span class="beat">🟢</span>':'<span class="miss">🔴</span>').join(' ');}
-    let targetHtml='—',upsideHtml='—';
-    if(f?.analystTarget&&d){targetHtml=`$${f.analystTarget.toFixed(0)}`;const u=((f.analystTarget-d.price)/d.price)*100;const uc=u>5?'upside-pos':u<-5?'upside-neg':'fl';upsideHtml=`<span class="${uc}">${u>=0?'+':''}${u.toFixed(1)}%</span>`;}
-    let earnHtml='—';
-    if(f?.earningsDays!=null){const ec=f.earningsDays<=7?'earn-soon':f.earningsDays<=21?'earn-near':'earn-ok';earnHtml=`<span class="${ec}">${f.earningsDays}d</span>${f.earningsDate?`<br><span style="font-size:8px;color:var(--text-dim)">${f.earningsDate}</span>`:''}`;}
+    let pegH='—';if(f?.peg){const pc=f.peg<1.5?'var(--green)':f.peg<2.5?'var(--yellow)':'var(--red)';pegH=`<span style="color:${pc};font-weight:700">${f.peg.toFixed(2)}</span>`;}
+    let revH='—';if(f?.revGrowth!=null){const rg=(f.revGrowth*100).toFixed(1);const rc=f.revGrowth>0.2?'var(--green)':f.revGrowth>0?'var(--yellow)':'var(--red)';revH=`<span style="color:${rc};font-weight:700">${rg>0?'+':''}${rg}%</span>`;}
+    let epsH='—';if(f?.epsTrend&&f.epsTrend.length){epsH=f.epsTrend.map(b=>b?'🟢':'🔴').join(' ');}
+    let tgtH='—',upH='—';
+    if(f?.analystTarget&&d){tgtH=`$${f.analystTarget.toFixed(0)}`;const u=((f.analystTarget-d.price)/d.price)*100;upH=`<span class="${u>5?'upside-pos':u<-5?'upside-neg':'fl'}">${u>=0?'+':''}${u.toFixed(1)}%</span>`;}
+    let earnH='—';
+    if(f?.earningsDays!=null){earnH=`<span class="${f.earningsDays<=7?'earn-soon':f.earningsDays<=21?'earn-near':'earn-ok'}">${f.earningsDays}d</span>${f.earningsDate?`<br><span style="font-size:8px;color:var(--text-dim)">${f.earningsDate}</span>`:''}`;}
     if(f)f._sym=sym;
-    const vs=calcValueScore(f,pos);
-    const vsHtml=vs===null?'—':`<span class="vscore ${vs>=7?'vs-hi':vs>=5?'vs-md':'vs-lo'}">${vs}/10</span>`;
+    const vs=calcVS(f,pos);
+    const vsH=vs===null?'—':`<span class="vscore ${vs>=7?'vs-hi':vs>=5?'vs-md':'vs-lo'}">${vs}/10</span>`;
     const tr=document.createElement('tr');
-    tr.innerHTML=`<td><span class="f-sym" style="color:${color}">${sym}</span></td><td>${price}</td><td>${fwdPE}</td><td>${pegHtml}</td><td>${revHtml}</td><td>${epsHtml}</td><td style="color:var(--text-dim)">${targetHtml}</td><td>${upsideHtml}</td><td>${earnHtml}</td><td>${vsHtml}</td>`;
+    tr.innerHTML=`<td><span class="f-sym" style="color:${color}">${sym}</span></td><td>${price}</td><td>${fwdPE}</td><td>${pegH}</td><td>${revH}</td><td>${epsH}</td><td style="color:var(--text-dim)">${tgtH}</td><td>${upH}</td><td>${earnH}</td><td>${vsH}</td>`;
     tb.appendChild(tr);
   });
 }
@@ -524,15 +457,15 @@ function closeModal(){document.getElementById('modalOv').classList.remove('open'
 function closeBg(e){if(e.target===document.getElementById('modalOv'))closeModal();}
 async function addTicker(){
   const sym=document.getElementById('tInput').value.trim().toUpperCase().replace(/[^A-Z]/g,'');
-  const status=document.getElementById('mStatus');
+  const st=document.getElementById('mStatus');
   if(!sym)return;
-  if(watchlist.includes(sym)){status.style.color='var(--yellow)';status.textContent=sym+' ALREADY IN WATCHLIST';return;}
-  status.style.color='var(--text-dim)';status.textContent='FETCHING '+sym+'...';
-  const d=await fetchYahoo(sym);
-  if(!d){status.style.color='var(--red)';status.textContent='COULD NOT FIND '+sym;return;}
+  if(watchlist.includes(sym)){st.style.color='var(--yellow)';st.textContent=sym+' ALREADY IN WATCHLIST';return;}
+  st.style.color='var(--text-dim)';st.textContent='FETCHING '+sym+'...';
+  const d=await fetchQuote(sym);
+  if(!d){st.style.color='var(--red)';st.textContent='COULD NOT FIND '+sym;return;}
   liveData[sym]=d;watchlist.push(sym);localStorage.setItem('rhythmWatchlist',JSON.stringify(watchlist));
   fetchFMP(sym).then(f=>{if(f&&f.ok){fundsData[sym]=f;buildFundamentals();}});
-  status.style.color='var(--green)';status.textContent='✓ '+sym+' ADDED · $'+d.price.toFixed(2);
+  st.style.color='var(--green)';st.textContent='✓ '+sym+' ADDED · $'+d.price.toFixed(2);
   buildStrip();buildCards();setTimeout(closeModal,900);
 }
 function removeTicker(sym){
@@ -540,4 +473,61 @@ function removeTicker(sym){
   watchlist=watchlist.filter(t=>t!==sym);localStorage.setItem('rhythmWatchlist',JSON.stringify(watchlist));
   buildStrip();buildCards();buildFundamentals();
 }
-function bui
+function buildSuggestions(){
+  const c=document.getElementById('sugChips');
+  SUGGESTIONS.forEach(s=>{const ch=document.createElement('div');ch.className='chip';ch.textContent=s;ch.onclick=()=>{document.getElementById('tInput').value=s;addTicker();};c.appendChild(ch);});
+}
+const SEED_WEEKLY=[
+  {week:'FEB 18',ticker:'VRT',price:'243.21',move:'-0.13',zone:'HIGH',status:'cs-n',notes:'Tight action.'},
+  {week:'FEB 18',ticker:'MU',price:'420.95',move:'+5.30',zone:'HIGH',status:'cs-n',notes:'Strong bounce.'},
+  {week:'FEB 18',ticker:'LITE',price:'594.26',move:'-1.03',zone:'HIGH',status:'cs-c',notes:'Building base.'},
+  {week:'FEB 18',ticker:'BE',price:'157.27',move:'+8.22',zone:'EXTENDED',status:'cs-e',notes:'ATH approach.'},
+  {week:'FEB 18',ticker:'SNDK',price:'621.09',move:'+3.98',zone:'HIGH',status:'cs-n',notes:'Steady climb.'},
+  {week:'FEB 25',ticker:'VRT',price:'253.15',move:'+5.95',zone:'AT ATH',status:'cs-e',notes:'Trim zone.'},
+  {week:'FEB 25',ticker:'MU',price:'428.78',move:'+2.58',zone:'HIGH/CONSOL',status:'cs-c',notes:'Best setup.'},
+  {week:'FEB 25',ticker:'LITE',price:'748.00',move:'+8.68',zone:'PARABOLIC',status:'cs-e',notes:'Trail stops.'},
+  {week:'FEB 25',ticker:'BE',price:'174.65',move:'+5.08',zone:'NEAR ATH',status:'cs-e',notes:'Near $176.49.'},
+  {week:'FEB 25',ticker:'SNDK',price:'639.25',move:'+0.11',zone:'HIGH/OFF ATH',status:'cs-c',notes:'Shooting star.'},
+];
+function seedWeekly(){if(!weeklyRows.length)weeklyRows=[...SEED_WEEKLY];}
+function buildWeekly(){
+  const tb=document.getElementById('weeklyBody');tb.innerHTML='';
+  weeklyRows.forEach(r=>{
+    const m=parseFloat(r.move);const mc=m>0?'up':m<0?'dn':'fl';
+    const bw=Math.min(Math.abs(m)*6,50);const bc=m>0?'var(--green)':'var(--red)';
+    const color=getColor(r.ticker);const tr=document.createElement('tr');
+    tr.innerHTML=`<td><span class="wt-tk" style="color:${color}">${r.ticker}</span></td><td style="color:var(--text-dim)">${r.week}</td><td><input class="pi" value="${r.price}"></td><td class="${mc}"><span class="mbar" style="width:${bw}px;background:${bc}"></span>${r.move}%</td><td style="font-size:9px">${r.zone}</td><td><span class="cst ${r.status}">${r.status.replace('cs-','').toUpperCase()}</span></td><td><input class="ni" value="${r.notes}" placeholder="note..."></td>`;
+    tb.appendChild(tr);
+  });
+}
+function addWeekRow(){
+  const wk=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}).toUpperCase();
+  watchlist.forEach(sym=>{const d=liveData[sym];const pos=d?getChannelPos(sym,d.price):50;weeklyRows.push({week:wk,ticker:sym,price:d?d.price.toFixed(2):'',move:d?(d.pct>=0?'+':'')+d.pct.toFixed(2):'0.0',zone:getZone(pos).label,status:'cs-n',notes:''});});
+  buildWeekly();
+}
+function saveNtfy(){ntfyChannel=document.getElementById('ntfyCh').value.trim();localStorage.setItem('ntfyCh',ntfyChannel);document.getElementById('ntfyStatus').textContent=ntfyChannel?'✓ SAVED: '+ntfyChannel:'CLEARED';}
+async function sendAlert(title,msg,priority='default'){if(!ntfyChannel)return;try{await fetch(`https://ntfy.sh/${ntfyChannel}`,{method:'POST',headers:{'Title':title,'Priority':priority},body:msg});}catch{}}
+async function testAlert(){if(!ntfyChannel){alert('Set ntfy channel first!');return;}await sendAlert('RHYTHM TEST ✓','Alerts working!','high');document.getElementById('ntfyStatus').textContent='✓ TEST SENT';}
+function checkAlerts(){
+  const pT=parseFloat(document.getElementById('alertPct')?.value||5);
+  const dT=parseFloat(document.getElementById('alertDanger')?.value||15);
+  const eT=parseFloat(document.getElementById('alertExtended')?.value||85);
+  const erT=parseFloat(document.getElementById('alertEarnings')?.value||7);
+  watchlist.forEach(sym=>{
+    const d=liveData[sym];if(!d)return;
+    const f=fundsData[sym];const pos=getChannelPos(sym,d.price);
+    if(Math.abs(d.pct)>=pT)sendAlert(`${sym} ${d.pct>=0?'▲':'▼'} ${d.pct.toFixed(1)}%`,`${sym} moved ${d.pct.toFixed(1)}% to $${d.price.toFixed(2)}`,'high');
+    if(pos<=dT)sendAlert(`⚠ ${sym} DANGER ZONE`,`${sym} at $${d.price.toFixed(2)}`);
+    if(pos>=eT)sendAlert(`📈 ${sym} EXTENDED`,`${sym} at $${d.price.toFixed(2)}`);
+    if(f?.earningsDays&&f.earningsDays<=erT)sendAlert(`📅 ${sym} EARNINGS IN ${f.earningsDays}d`,`Reports ${f.earningsDate}`,'high');
+  });
+}
+function switchTab(name,el){
+  document.querySelectorAll('.tc').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(el)el.classList.add('active');
+}
+</script>
+</body>
+</html>
