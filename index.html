@@ -289,9 +289,9 @@ let liveData={},fundsData={};
 let watchlist=JSON.parse(localStorage.getItem('rhythmWatchlist')||'null')||[...DEFAULT_TICKERS];
 let weeklyRows=[],ntfyChannel=localStorage.getItem('ntfyCh')||'';
 window.addEventListener('DOMContentLoaded',()=>{buildStrip();buildCards();buildSuggestions();if(ntfyChannel)document.getElementById('ntfyCh').value=ntfyChannel;seedWeekly();buildWeekly();});
-async function fetchQuote(sym){
+async function fetchprofile(sym){
   try{
-    const r=await apiFetch(`${FMP}/quote/${sym}?apikey=${FMP_KEY}`,9000);
+    const r=await apiFetch(`${FMP}/profile/${sym}?apikey=${FMP_KEY}`,9000);
     if(!r)return null;
     const j=await r.json();
     const q=Array.isArray(j)?j[0]:j;
@@ -329,7 +329,7 @@ async function refreshAll(){
   btn.classList.add('spin');btn.textContent='↻ LOADING';
   document.getElementById('statusBar').textContent='FETCHING FROM FMP...';
   let pOk=0,fOk=0;
-  const pp=watchlist.map(async sym=>{const d=await fetchQuote(sym);if(d){liveData[sym]=d;pOk++;}});
+  const pp=watchlist.map(async sym=>{const d=await fetchprofile(sym);if(d){liveData[sym]=d;pOk++;}});
   const fp=watchlist.map(async sym=>{const d=await fetchFMP(sym);if(d&&d.ok){fundsData[sym]=d;fOk++;}});
   await Promise.allSettled([...pp,...fp]);
   btn.classList.remove('spin');btn.textContent='↻ REFRESH';
@@ -461,7 +461,7 @@ async function addTicker(){
   if(!sym)return;
   if(watchlist.includes(sym)){st.style.color='var(--yellow)';st.textContent=sym+' ALREADY IN WATCHLIST';return;}
   st.style.color='var(--text-dim)';st.textContent='FETCHING '+sym+'...';
-  const d=await fetchQuote(sym);
+  const d=await fetchprofile(sym);
   if(!d){st.style.color='var(--red)';st.textContent='COULD NOT FIND '+sym;return;}
   liveData[sym]=d;watchlist.push(sym);localStorage.setItem('rhythmWatchlist',JSON.stringify(watchlist));
   fetchFMP(sym).then(f=>{if(f&&f.ok){fundsData[sym]=f;buildFundamentals();}});
